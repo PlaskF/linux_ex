@@ -1,0 +1,23 @@
+root@server:~/바탕화면# touch mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-rw-r--r-- 1 root root 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면# chmod 777 mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-rwxrwxrwx 1 root root 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면# chmod 644 mydata.txt
+root@server:~/바탕화면# chmod 644 mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-rw-r--r-- 1 root root 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면# chmod u+x mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-rwxr--r-- 1 root root 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면# chmod u-w mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-r-xr--r-- 1 root root 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면# chmod g+w mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-r-xrw-r-- 1 root root 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면# chmod o+x mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-r-xrw-r-x 1 root root 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면#
