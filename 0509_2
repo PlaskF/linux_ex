@@ -1,0 +1,95 @@
+root@server:~/바탕화면# tail /etc/shadow
+gnome-initial-setup:*:19411:0:99999:7:::
+hplip:*:19411:0:99999:7:::
+gdm:*:19411:0:99999:7:::
+ubuntu:$y$j9T$qc711/EzwlD.SXdoexsGH.$9.z1w2gbeilpcYY7vS372uMiIac9Z0qBxaIv6aKlWC2:19430:0:99999:7:::
+ubuntu2:$y$j9T$j79nbPC46oevFVvplh8e21$NATlbyaMRadWbS6nB/Q9v4bXXMuLK7.5800fSa3Dx3C:19479:10:30:10::20818:
+ubuntu3:$y$j9T$pAqSEbpcDI1eGcRFn89pt1$FoXhIlo3ylAO/vmzPc5z4hcEnAuzlsKfp6TjijJEb28:19479:0:99999:7:::
+ubuntu4:$y$j9T$Qy0T18MkOzbGClotq2L241$9UtYGqFeCByn1k/tbuKzh9elhZfC3udxsB36bvw7231:19479:0:99999:7:::
+ubuntu5:$y$j9T$s/QFkzOOW5XqNshFd4aN0.$KmVpkawzExRFLTAFz6Kb299gcAns7g8LOqDt6nCIGF.:19479:0:99999:7:::
+hanbit1:$y$j9T$w2QNeezl8lg.dS5Y9BLsM1$B.mdo6YZD/NJsbMpiobleqE3/IAHvfTQUaHnScfLig0:19479:0:99999:7:::
+hanbit2:$y$j9T$p.PKQKTyy3Yqm6HEnJKB/1$WwwW8o.3kNXsyYffvnTJQKdZcLox8ccfEVMPo5OsqY8:19479:0:99999:7:::
+root@server:~/바탕화면# chown ubuntu2 mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-r-xrw-r-x 1 ubuntu2 root 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면# chown ubuntu3.ubuntu3 mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-r-xrw-r-x 1 ubuntu3 ubuntu3 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면# chgrp root mydata.txt
+root@server:~/바탕화면# ls -l mydata.txt
+-r-xrw-r-x 1 ubuntu3 root 0  5월  9 09:25 mydata.txt
+root@server:~/바탕화면# nano sample
+root@server:~/바탕화면# nano sample
+root@server:~/바탕화면# cat sample
+리눅스 명령 연습중
+파일허가권과 소유권에 대한 명령 실습중
+ls /var
+
+root@server:~/바탕화면# ls -l sample
+-rw-r--r-- 1 root root 92  5월  9 10:15 sample
+root@server:~/바탕화면# chmod u+x sample
+root@server:~/바탕화면# ls -l sample
+-rwxr--r-- 1 root root 92  5월  9 10:15 sample
+root@server:~/바탕화면# sample
+명령어 'sample' 을(를) 찾을 수 없습니다. 그러나 다음을 통해 설치할 수 있습니다:
+apt install barcode
+root@server:~/바탕화면# ./sample
+./sample: 줄 1: 리눅스: 명령어를 찾을 수 없음
+./sample: 줄 2: 파일허가권과: 명령어를 찾을 수 없음
+backups  crash	local  log   metrics  run   spool
+cache	 lib	lock   mail  opt      snap  tmp
+root@server:~/바탕화면# whoami
+root
+root@server:~/바탕화면# chown ubuntu sample
+root@server:~/바탕화면# ls -l sample
+-rwxr--r-- 1 ubuntu root 92  5월  9 10:15 sample
+root@server:~/바탕화면# chown ubuntu.ubuntu sample
+root@server:~/바탕화면# ls -l sample
+-rwxr--r-- 1 ubuntu ubuntu 92  5월  9 10:15 sample
+root@server:~/바탕화면# chmod 754 sample
+root@server:~/바탕화면# ls -l sample
+-rwxr-xr-- 1 ubuntu ubuntu 92  5월  9 10:15 sample
+root@server:~/바탕화면# su - ubuntu
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@server:~$ pwd
+/home/ubuntu
+ubuntu@server:~$ ls - l /root/sample
+ls: '-'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+ls: 'l'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+ls: '/root/sample'에 접근할 수 없음: 허가 거부
+ubuntu@server:~$ ls -l /root/sample
+ls: '/root/sample'에 접근할 수 없음: 허가 거부
+ubuntu@server:~$ ls -ld /root
+drwx------ 17 root root 4096  4월 18 11:08 /root
+ubuntu@server:~$ logout
+root@server:~/바탕화면# mv sample ~ubuntu
+root@server:~/바탕화면# ls -l sample
+ls: 'sample'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+root@server:~/바탕화면# su - ubuntu
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@server:~$ ls -l sample
+-rwxr-xr-- 1 ubuntu ubuntu 92  5월  9 10:15 sample
+ubuntu@server:~$ pwd
+/home/ubuntu
+ubuntu@server:~$ ls -ld /ubuntu
+ls: '/ubuntu'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+ubuntu@server:~$ ls -ld /home/ubuntu
+drwxr-x--- 14 ubuntu ubuntu 4096  5월  9 10:38 /home/ubuntu
+ubuntu@server:~$ chmod 777 sample
+ubuntu@server:~$ ls -l sample
+-rwxrwxrwx 1 ubuntu ubuntu 92  5월  9 10:15 sample
+ubuntu@server:~$ chown root.root sample
+chown: 'sample'의 소유권 바꾸는 중: 명령을 허용하지 않음
+ubuntu@server:~$ logout
+root@server:~/바탕화면# cd
+root@server:~# mkdir linkdir
+root@server:~# cd linkdir/
+root@server:~/linkdir# nano originalfile
+root@server:~/linkdir# cat originalfile
+링크시킬 원본 파일을 작성합니다.
+root@server:~/linkdir# ^C
+root@server:~/linkdir# 
