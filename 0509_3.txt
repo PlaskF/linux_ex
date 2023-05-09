@@ -1,0 +1,47 @@
+root@server:~# cd linkdir/
+root@server:~/linkdir# cat originalfile
+링크시킬 원본 파일을 작성합니다.
+root@server:~/linkdir# ln originalfile hardlink
+root@server:~/linkdir# ln -s originalfile softlink
+root@server:~/linkdir# ls
+hardlink  originalfile  softlink
+root@server:~/linkdir# ls -il
+합계 8
+131093 -rw-r--r-- 2 root root 47  5월  9 10:50 hardlink
+131093 -rw-r--r-- 2 root root 47  5월  9 10:50 originalfile
+131092 lrwxrwxrwx 1 root root 12  5월  9 11:21 softlink -> originalfile
+root@server:~/linkdir# cat hardlink
+링크시킬 원본 파일을 작성합니다.
+root@server:~/linkdir# cat softlink
+링크시킬 원본 파일을 작성합니다.
+root@server:~/linkdir# mv originalfile ../
+root@server:~/linkdir# ls -il
+합계 4
+131093 -rw-r--r-- 2 root root 47  5월  9 10:50 hardlink
+131092 lrwxrwxrwx 1 root root 12  5월  9 11:21 softlink -> originalfile
+root@server:~/linkdir# cd
+root@server:~# ls -il originalfile
+131093 -rw-r--r-- 2 root root 47  5월  9 10:50 originalfile
+root@server:~# cd linkdir/
+root@server:~/linkdir# cat hardlink
+링크시킬 원본 파일을 작성합니다.
+root@server:~/linkdir# cat softlink
+cat: softlink: 그런 파일이나 디렉터리가 없습니다
+root@server:~/linkdir# cd
+root@server:~# mv originalfile ./linkdir
+root@server:~# cd linkdir/
+root@server:~/linkdir# cat softlink
+링크시킬 원본 파일을 작성합니다.
+root@server:~/linkdir# 
+
+
+root@server:~# yes > /dev/null
+죽었음
+root@server:~# 
+
+root@server:~/바탕화면# ps -ef|grep yes
+root        2846    1985 99 11:39 pts/0    00:01:32 yes
+root        2864    2855  0 11:41 pts/1    00:00:00 grep --color=auto yes
+root@server:~/바탕화면# kill -9 2846
+root@server:~/바탕화면# 
+
